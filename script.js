@@ -86,7 +86,6 @@ productos.forEach((producto) => {
 
 
 //   FORMULARIO POR DOM 
-
 const formulario = document.getElementById('formContacto');
 const divForm = document.createElement('div');
 
@@ -103,14 +102,25 @@ divForm.innerHTML = `<div id="formCard">
 formulario.appendChild(divForm);
 
 
-// mensaje de submit
+// guardar los datos en localstorage
+const email = document.getElementById(`exampleFormControlInput1`).value
+const consulta = document.getElementById(`exampleFormControlTextarea1`).value
 
+function tomarDatos(e){
+    const email = document.getElementById('email')
+    console.log(email)
+    e.preventDefault()
+}
+
+// mensaje de submit
 const botonSub = document.getElementById(`botonSubmit`);
     const contenedor = document.getElementById(`formCard`)
 
     botonSub.addEventListener('click', () => {
+    
     contenedor.innerHTML += `<div>
     <p>Sus datos han sido enviados. Muchas gracias</p>
     </div>`
+    tomarDatos(e);
     });
 
