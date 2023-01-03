@@ -103,24 +103,31 @@ formulario.appendChild(divForm);
 
 
 // guardar los datos en localstorage
-const email = document.getElementById(`exampleFormControlInput1`).value
-const consulta = document.getElementById(`exampleFormControlTextarea1`).value
+
 
 function tomarDatos(e){
-    const email = document.getElementById('email')
-    console.log(email)
     e.preventDefault()
+    const email = document.getElementById(`exampleFormControlInput1`).value
+    const consulta = document.getElementById(`exampleFormControlTextarea1`).value
+
+    let user = {
+        email: email,
+        consulta: consulta
+    }
+    
+    localStorage.setItem(JSON.stringify(user.email),JSON.stringify(user.consulta))
 }
 
-// mensaje de submit
-const botonSub = document.getElementById(`botonSubmit`);
+// mensaje de submit y ejecutar funcion cuando hago click en submit
+    const botonSub = document.getElementById(`botonSubmit`);
     const contenedor = document.getElementById(`formCard`)
 
-    botonSub.addEventListener('click', () => {
-    
+    botonSub.addEventListener('click', (e) => {
+    tomarDatos(e);
+
     contenedor.innerHTML += `<div>
     <p>Sus datos han sido enviados. Muchas gracias</p>
     </div>`
-    tomarDatos(e);
+    
     });
 
