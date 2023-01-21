@@ -159,7 +159,7 @@ const lista = document.querySelector(`#lista`);
 
 
 function mostrarSucursales() {
-    fetch("/data.json")
+    fetch("./data.json")
         .then((resp) => resp.json())
         .then((data) => {
             data.forEach((producto) => {
