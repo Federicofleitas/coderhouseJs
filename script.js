@@ -79,6 +79,7 @@ productos.forEach((producto) => {
     6 cuotas sin interes: $${producto.cuotas / 6} <br>
     12 cuotas sin interes: $${producto.cuotas / 12}</p>
     </div>`
+    
     });
 
 
@@ -125,11 +126,30 @@ const contenedor = document.getElementById(`formCard`)
 botonSub.addEventListener('click', (e) => {
     tomarDatos(e);
 
-    contenedor.innerHTML += `<div>
-    <p>Sus datos han sido enviados. Muchas gracias</p>
-    </div>`
+    contenedor.innerHTML += ``
+
+    //Cambio el mensaje por un toastify
+
+    Toastify({
+        text: " Su mensaje ha sido enviado",
+        duration: 5000,
+        destination: "",
+        close: true,
+        gravity: "top", // `top` or `bottom`
+        position: "center", // `left`, `center` or `right`
+        stopOnFocus: true, // Prevents dismissing of toast on hover
+        style: {
+          background: "black",
+        },
+        onClick: function(){} // Callback after click
+      }).showToast();
 
 });
+
+
+// Toastify para click en enviar 
+
+
 
 
 // ASYNC para los numeros de contacto 
@@ -160,3 +180,5 @@ botonSuc.addEventListener('click', () => {
     mostrarSucursales();
 
 });
+
+
