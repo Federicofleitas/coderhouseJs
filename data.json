@@ -1,0 +1,9 @@
+[
+
+    {"sucursal": "Buenos Aires", "telefono": 3443234353 ,"id":1 },
+    {"sucursal": "Misiones", "telefono": 13424553564 ,"id":2 },
+    {"sucursal": "Cordoba", "telefono": 2344675445 ,"id":2 },
+    {"sucursal": "Santa Fe", "telefono": 3532643421 ,"id":3 },
+    {"sucursal": "Chubut", "telefono": 467845534 ,"id":4 },
+    {"sucursal": "Entre Rios", "telefono": 456457587658 ,"id":5 }    
+]

@@ -49,38 +49,38 @@ productos.forEach((producto) => {
     const contenedor = document.getElementById(`info${producto.id}`)
 
     boton1.addEventListener('click', () => {
-    contenedor.innerHTML = "";
-    contenedor.innerHTML += `<div>
+        contenedor.innerHTML = "";
+        contenedor.innerHTML += `<div>
     <p>${producto.info}</p>
     </div>`
     });
-    
+
 
 
     // CTA EFECTIVO 
     const boton2 = document.getElementById(`boton${producto.cash}`);
 
     boton2.addEventListener('click', () => {
-    contenedor.innerHTML = "";
-    contenedor.innerHTML += `<div>
+        contenedor.innerHTML = "";
+        contenedor.innerHTML += `<div>
     <p>El precio en efectivo tiene un descuento del 10% <br>
     Precio final: $${producto.cash}</p>
     </div>`
     });
-    
+
 
     // CTA CUOTAS
     const boton3 = document.getElementById(`boton${producto.cuotas}`);
 
     boton3.addEventListener('click', () => {
-    contenedor.innerHTML = "";
-    contenedor.innerHTML += `<div>
+        contenedor.innerHTML = "";
+        contenedor.innerHTML += `<div>
     <p>3 cuotas sin interes: $${producto.cuotas / 3} <br>
     6 cuotas sin interes: $${producto.cuotas / 6} <br>
     12 cuotas sin interes: $${producto.cuotas / 12}</p>
     </div>`
     });
-    
+
 
 });
 
@@ -105,7 +105,7 @@ formulario.appendChild(divForm);
 // guardar los datos en localstorage
 
 
-function tomarDatos(e){
+function tomarDatos(e) {
     e.preventDefault()
     const email = document.getElementById(`exampleFormControlInput1`).value
     const consulta = document.getElementById(`exampleFormControlTextarea1`).value
@@ -114,20 +114,49 @@ function tomarDatos(e){
         email: email,
         consulta: consulta
     }
-    
-    localStorage.setItem(JSON.stringify(user.email),JSON.stringify(user.consulta))
+
+    localStorage.setItem(JSON.stringify(user.email), JSON.stringify(user.consulta))
 }
 
 // mensaje de submit y ejecutar funcion cuando hago click en submit
-    const botonSub = document.getElementById(`botonSubmit`);
-    const contenedor = document.getElementById(`formCard`)
+const botonSub = document.getElementById(`botonSubmit`);
+const contenedor = document.getElementById(`formCard`)
 
-    botonSub.addEventListener('click', (e) => {
+botonSub.addEventListener('click', (e) => {
     tomarDatos(e);
 
     contenedor.innerHTML += `<div>
     <p>Sus datos han sido enviados. Muchas gracias</p>
     </div>`
-    
-    });
 
+});
+
+
+// ASYNC para los numeros de contacto 
+
+const botonSuc = document.querySelector(`.botsuc`);
+const lista = document.querySelector(`#lista`);
+
+
+function mostrarSucursales() {
+    fetch("/data.json")
+        .then((resp) => resp.json())
+        .then((data) => {
+            data.forEach((producto) => {
+                const li = document.createElement("li")
+                li.innerHTML = `
+                    <h4>${producto.sucursal}</h4>
+                    <h5>${producto.telefono}</h5>
+                    `
+
+                lista.append(li)
+            })
+        })
+}
+
+
+// Evento para hacer el boton sucursales
+botonSuc.addEventListener('click', () => {
+    mostrarSucursales();
+
+});
